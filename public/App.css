@@ -1,3 +1,11 @@
 h2 {
     text-align: center;
 }
+
+div.status {
+    background-color: red;
+    border-radius: 5px;
+    border: 1px solid black;
+    text-align: center;
+    font-weight: bold;
+}
