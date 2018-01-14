@@ -4,3 +4,10 @@ export const updateStatus = (statusText) => {
         payload: statusText
     }
 };
+
+export const updateFilename = (filename) => {
+    return {
+        type:'UPDATE_FILENAME',
+        payload: filename
+    }
+};

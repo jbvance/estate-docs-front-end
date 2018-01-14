@@ -1,9 +1,19 @@
-export function status(state='INITIAL STATUS', action) {
+export function status(state='', action) {
     switch (action.type){
         case 'UPDATE_STATUS':
-            return action.payload || "NO STATUS CHANGE PROVIDED";
+            return action.payload;        
         default:
-            return ''
+            return state
+    }
+    
+}
+
+export function filename(state='', action) {
+    switch (action.type){
+        case 'UPDATE_FILENAME':        
+            return action.payload;        
+        default:
+            return state
     }
     
 }

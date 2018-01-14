@@ -6,7 +6,7 @@ import WizardFormFirstPage from './WizardFormFirstPage';
 import WizardFormSecondPage from './WizardFormSecondPage';
 import WizardFormThirdPage from './WizardFormThirdPage';
 import StatusComp from './statusComp';
-import { updateStatus}  from './actions';
+import { updateStatus, updateFilename}  from './actions';
 import axios from 'axios';
 
 class WizardForm extends Component {
@@ -31,13 +31,14 @@ class WizardForm extends Component {
   onSubmitForm(values) {
    //this.props.onSubmit(values)
     console.log(values);    
-    axios.post('http://localhost:7777/makedoc', {
-    //axios.post('https://estate-docs-api.herokuapp.com/makedoc', {
+    //axios.post('http://localhost:7777/makedoc', {
+    axios.post('https://estate-docs-api.herokuapp.com/makedoc', {
       body: values
     })
     .then( (response) => {
       //this.setState({status: response.data.message});
       this.props.updateStatus(response.data.message)
+      this.props.updateFilename(response.data.filename)
       console.log(response.data.message);     
     })
     .catch((error) => {
@@ -52,7 +53,7 @@ class WizardForm extends Component {
     const { page } = this.state;
     return (
       <div>
-        {this.props.status && <StatusComp status={this.props.status} />}
+        {this.props.status && <StatusComp status={this.props.status} filename={this.props.filename} />}
         {page === 1 && <WizardFormFirstPage onSubmit={this.nextPage} />}
         {page === 2 &&
           <WizardFormSecondPage
@@ -75,13 +76,15 @@ WizardForm.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    status: state.status
+    status: state.status,
+    filename: state.filename
   };
 };
 
 const mapDispatchToProps = (dispatch) => {  
   return bindActionCreators({
-    updateStatus
+    updateStatus,
+    updateFilename
   }, dispatch);
 };
 

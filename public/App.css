@@ -3,9 +3,15 @@ h2 {
 }
 
 div.status {
-    background-color: red;
+    background-color: #449d44;
+    color: white;
+    border-color:#419641;
     border-radius: 5px;
     border: 1px solid black;
     text-align: center;
     font-weight: bold;
+}
+
+div.status a {
+    color:white;
 }
