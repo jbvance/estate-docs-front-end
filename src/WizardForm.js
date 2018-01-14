@@ -30,9 +30,8 @@ class WizardForm extends Component {
 
   onSubmitForm(values) {
    //this.props.onSubmit(values)
-    console.log(values);    
-    //axios.post('http://localhost:7777/makedoc', {
-    axios.post('https://estate-docs-api.herokuapp.com/makedoc', {
+    console.log(values);        
+    axios.post(`${process.env.REACT_APP_API_URL}/makedoc`, {
       body: values
     })
     .then( (response) => {

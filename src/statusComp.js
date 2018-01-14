@@ -6,7 +6,8 @@ const StatusComp = (props) => {
                 {props.status}
                 {props.filename
                 ? <div>
-                    <a href={`https://estate-docs-api.herokuapp.com/download/${props.filename}`}>Click here to download your document</a>
+                   
+                    <a href={`${process.env.REACT_APP_API_URL}/download/${props.filename}`}>Click here to download your document</a>
                   </div>
                 : ''}
             </div>
