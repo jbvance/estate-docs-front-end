@@ -7,7 +7,7 @@ const WizardFormThirdPage = props => {
   return (
     <form onSubmit={handleSubmit}>
     <div>
-      <h3>Should this form become effectively immediatley?</h3>
+      <h3>Should this form become effectively immediately?</h3>
     </div>
      <div>        
         <p>If you check the box below, the power of attorney will become effective immediately and your agent

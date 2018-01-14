@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import WizardFormFirstPage from './WizardFormFirstPage';
 import WizardFormSecondPage from './WizardFormSecondPage';
@@ -30,15 +31,18 @@ class WizardForm extends Component {
   onSubmitForm(values) {
    //this.props.onSubmit(values)
     console.log(values);    
-    axios.post('https://estate-docs-api.herokuapp.com/makedoc', {
+    axios.post('http://localhost:7777/makedoc', {
+    //axios.post('https://estate-docs-api.herokuapp.com/makedoc', {
       body: values
     })
     .then( (response) => {
-      this.setState({status: response.data.message});
+      //this.setState({status: response.data.message});
+      this.props.updateStatus(response.data.message)
       console.log(response.data.message);     
     })
     .catch((error) => {
-      this.setState({status: error.mapDispatchToProps})
+      this.props.updateStatus(error.message)
+      //this.setState({status: error.mapDispatchToProps})
       console.log(error);     
     });
   }
@@ -48,7 +52,7 @@ class WizardForm extends Component {
     const { page } = this.state;
     return (
       <div>
-        {this.props.status && <StatusComp status={this.state.status} />}
+        {this.props.status && <StatusComp status={this.props.status} />}
         {page === 1 && <WizardFormFirstPage onSubmit={this.nextPage} />}
         {page === 2 &&
           <WizardFormSecondPage
@@ -75,10 +79,11 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-     updateStatus: (newStatus) => updateStatus(newStatus),     
-  }
-}
+const mapDispatchToProps = (dispatch) => {  
+  return bindActionCreators({
+    updateStatus
+  }, dispatch);
+};
 
-export default connect(mapStateToProps)(WizardForm);
+//export default WizardForm;
+export default connect(mapStateToProps, mapDispatchToProps)(WizardForm);

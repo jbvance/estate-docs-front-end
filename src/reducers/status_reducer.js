@@ -1,9 +1,9 @@
 export function status(state='INITIAL STATUS', action) {
     switch (action.type){
         case 'UPDATE_STATUS':
-            return action.payload
+            return action.payload || "NO STATUS CHANGE PROVIDED";
         default:
-            return 'NO STATUS UPDATE'
+            return ''
     }
     
 }
