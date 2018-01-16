@@ -1,6 +1,6 @@
 import { createStore, combineReducers } from 'redux';
 import { reducer as reduxFormReducer } from 'redux-form';
-import { status, filename } from './reducers/status_reducer';
+import { status, filename } from './reducers';
 
 const reducer = combineReducers({
   form: reduxFormReducer, // mounted under "form",

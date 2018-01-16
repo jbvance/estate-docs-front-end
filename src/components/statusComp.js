@@ -5,9 +5,10 @@ const StatusComp = (props) => {
             <div className="status">
                 {props.status}
                 {props.filename
-                ? <div>
-                   
+                ? <div>                   
                     <a href={`${process.env.REACT_APP_API_URL}/download/${props.filename}`}>Click here to download your document</a>
+                    <br />
+                    <a href="/">Click here to start a new form</a>
                   </div>
                 : ''}
             </div>

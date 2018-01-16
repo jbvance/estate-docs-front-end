@@ -1,9 +1,9 @@
 import React from 'react';
 import { Field, FieldArray, reduxForm } from 'redux-form';
-import validate from './validate';
-import renderField from './renderField';
-import renderAgents from './renderAgents'
-import renderStates from './renderStates';
+import validate from '../../validate';
+import renderField from '../helpers/renderField';
+import renderAgents from '../helpers/renderAgents'
+import renderStates from '../helpers/renderStates';
 
 const renderError = ({ meta: { touched, error } }) =>
   touched && error ? <span>{error}</span> : false;

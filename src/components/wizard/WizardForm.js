@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import WizardFormFirstPage from './WizardFormFirstPage';
 import WizardFormSecondPage from './WizardFormSecondPage';
 import WizardFormThirdPage from './WizardFormThirdPage';
-import StatusComp from './statusComp';
-import { updateStatus, updateFilename}  from './actions';
+import StatusComp from '../statusComp';
+import { updateStatus, updateFilename}  from '../../actions';
 import axios from 'axios';
 
 class WizardForm extends Component {
